@@ -9,7 +9,8 @@ const cors = require('cors');
 const corsConfig = {
     origin: ["http://localhost:4200"],
     allowedHeaders: ['Access-Control-Allow-Origin','Content-Type',
-    'access-control-allow-credentials','X-Requested-With','Accept','authorization'],
+    'access-control-allow-credentials','X-Requested-With','Accept','authorization',
+    'access-control-allow-methods'],
     credentials: true,
     methods: "GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE"
 };

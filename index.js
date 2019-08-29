@@ -42,7 +42,7 @@ app.use('/games', gameRoute);
 
 const listen_port = process.env.PORT || 8080;
 
-const host = process.env.HOST || 'ckmwebapi.herokuapp.com';
+const host = process.env.HOST || 'https://ckmwebapi.herokuapp.com';
 
 cors_proxy.createServer({
     originWhitelist: [], // Allow all origins

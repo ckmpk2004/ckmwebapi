@@ -7,8 +7,8 @@ const { gameValidation, gameChangeValidation } = require('../validation');
 //Get all games in store
 router.get('/', async (req,res) =>{
 
-    await res.header("Access-Control-Allow-Origin", "*");
-    await res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    await res.header("Access-Control-Allow-Origin","*","Access-Control-Allow-Headers", 
+    "Origin, X-Requested-With, Content-Type, Accept");
 
    await Games.find({}, function(err, games){
        if(err){

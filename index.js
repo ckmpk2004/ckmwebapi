@@ -3,21 +3,14 @@ const app = express();
 const dotenv = require('dotenv').config();
 const mongoose = require('mongoose');
 var bodyParser= require('body-parser');
+const cors = require('cors');
 const restify = require('restify')
 const corsMiddleware = require('restify-cors-middleware')
 
 //cors options
-const cors = corsMiddleware({
-    preflightMaxAge: 5, //Optional
-    origins: ['localhost:4200'],
-    allowHeaders: ['Authorization'],
-    credentials:true,
-    allowmethods:['GET', 'PUT', 'POST','DELETE','PATCH','OPTIONS'],
-    exposeHeaders: ['Authorization']
-  })
 
-app.use(cors.actual);
 app.use(bodyParser.json());
+app.use(cors());
 
 //Import Routes
 const authRoute = require('./routes/auth');

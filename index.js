@@ -25,12 +25,6 @@ const corsOptions = {
   exposeHeaders: ['Autharization']
 }
 
-app.use(function(req, res, next) { 
-    res.header('Access-Control-Allow-Origin', '*')
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
-    next();
-})
-
 //Middleware
 app.use(express.json());
 app.use(cors(corsOptions));

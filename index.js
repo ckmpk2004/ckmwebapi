@@ -9,7 +9,7 @@ const authRoute = require('./routes/auth');
 const gameRoute = require('./routes/games');
 
 //connect to DB
-mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true },
+mongoose.connect(process.env.DB_CONNECT|| 'mongodb+srv://webAuthenUser:27065124@ckmmongodb-vgxt7.azure.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true },
     () => console.log('Successfully connected to DB!')
 );
 mongoose.set('useFindAndModify', false);
@@ -18,10 +18,10 @@ mongoose.set('useFindAndModify', false);
 const corsOptions = {
   preflightMaxAge: 5, //Optional
   origins: ['localhost:4200'],
-  allowHeaders: ['Authorization'],
+  allowHeaders: ['auth-token'],
   credentials:true,
   allowmethods:['GET', 'PUT', 'POST','DELETE','PATCH','OPTIONS'],
-  exposeHeaders: ['Authorization']
+  exposeHeaders: ['auth-token']
 }
 
 
@@ -34,5 +34,5 @@ app.use('/', authRoute);
 app.use('/games', gameRoute);
 
 
-listen_port = process.env.PORT;
+const listen_port = process.env.PORT || 8080;
 app.listen(listen_port, () => console.log('Backend server start up at port '+ listen_port));

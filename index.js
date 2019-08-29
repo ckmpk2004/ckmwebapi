@@ -41,7 +41,7 @@ app.use('/games', gameRoute);
 
 
 const listen_port = process.env.PORT || 8080;
-
+/*
 const host = process.env.HOST || 'https://ckmwebapi.herokuapp.com';
 
 cors_proxy.createServer({
@@ -51,5 +51,5 @@ cors_proxy.createServer({
 }).listen(listen_port, host, function() {
     console.log('Running CORS Anywhere on ' + host + ':' + listen_port);
 });
-
-//app.listen(listen_port, () => console.log('Backend server start up at port '+ listen_port));
+*/
+app.listen(listen_port, () => console.log('Backend server start up at port '+ listen_port));

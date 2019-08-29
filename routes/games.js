@@ -3,13 +3,14 @@ const Games = require('../model/Games');
 const verify = require('./verifyToken');
 const { gameValidation, gameChangeValidation } = require('../validation');
 
+
 //Get all games in store
 router.get('/', async (req,res) =>{
    await Games.find({}, function(err, games){
        if(err){
            res.status(400).send('Currently no game in store or haveing bug.')
        }else{
-           res.header('Access-Control-Allow-Origin', '*').send(games);
+           res.send(games);
        }
    }
     )

@@ -4,8 +4,6 @@ const dotenv = require('dotenv').config();
 const mongoose = require('mongoose');
 var bodyParser= require('body-parser');
 const cors = require('cors');
-const restify = require('restify')
-const corsMiddleware = require('restify-cors-middleware')
 
 //cors options
 

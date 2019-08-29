@@ -47,7 +47,7 @@ const listen_port = process.env.PORT || 8080;
 
 //cors proxy
 app.options("*", cors(corsConfig));
-var host = process.env.HOST || '0.0.0.0';
+var host = process.env.HOST || '124.244.118.91';
 
 cors_proxy.createServer({
     originWhitelist: ['localhost:4200'], // Allow all origins

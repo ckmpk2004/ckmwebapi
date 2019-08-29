@@ -6,6 +6,7 @@ const { registerValidation, loginValidation } = require('../validation');
 
 
 //User Registation
+/*
 router.post('/register', async (req, res) => {
 
     //Make Sure data is vaild before adding user
@@ -34,7 +35,7 @@ router.post('/register', async (req, res) => {
         res.status(400).send(error);
     }
 });
-
+*/
 //User Login
 router.post('/login', async (req,res) => {
      //Make Sure data is vaild before adding user

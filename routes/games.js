@@ -7,6 +7,9 @@ const { gameValidation, gameChangeValidation } = require('../validation');
 //Get all games in store
 router.get('/', async (req,res) =>{
 
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
    await Games.find({}, function(err, games){
        if(err){
            res.status(400).send('Currently no game in store or haveing bug.')

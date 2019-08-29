@@ -14,10 +14,20 @@ mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true },
 );
 mongoose.set('useFindAndModify', false);
 
+//cors options
+const corsOptions = {
+  preflightMaxAge: 5, //Optional
+  origins: ['localhost:4200'],
+  allowHeaders: ['Authorization'],
+  credentials:true,
+  allowmethods:['GET', 'PUT', 'POST','DELETE','PATCH','OPTIONS'],
+  exposeHeaders: ['Authorization']
+}
+
 
 //Middleware
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
 
 //Route Middleware
 app.use('/', authRoute);

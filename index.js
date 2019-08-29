@@ -19,23 +19,24 @@ const cors = corsMiddleware({
 app.use(cors.actual);
 app.use(bodyParser.json());
 
+app.use(function(req, res, next) {
+    res.header('Access-Control-Allow-Origin',"*")
+    res.header(('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept'))
+    next()
+})
+
 //Import Routes
 const authRoute = require('./routes/auth');
 const gameRoute = require('./routes/games');
 
 //connect to DB
-mongoose.connect(process.env.DB_CONNECT|| 'mongodb+srv://webAuthenUser:27065124@ckmmongodb-vgxt7.azure.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true },
+mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true },
     () => console.log('Successfully connected to DB!')
 );
 mongoose.set('useFindAndModify', false);
 
 
 //Middleware
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept");
-    next();
-   });
 app.use(express.json());
 
 

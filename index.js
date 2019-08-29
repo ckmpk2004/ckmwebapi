@@ -4,6 +4,7 @@ const dotenv = require('dotenv').config();
 const mongoose = require('mongoose');
 var bodyParser= require('body-parser');
 const cors = require('cors');
+var cors_proxy = require('cors-anywhere');
 
 //cors options
 const corsConfig = {
@@ -18,6 +19,9 @@ const corsConfig = {
 //cors
 app.use(bodyParser.json());
 app.use(cors(corsConfig));
+
+
+
 
 //Import Routes
 const authRoute = require('./routes/auth');
@@ -41,5 +45,15 @@ app.use('/games', gameRoute);
 
 const listen_port = process.env.PORT || 8080;
 
+//cors proxy
 app.options("*", cors(corsConfig));
-app.listen(listen_port, () => console.log('Backend server start up at port '+ listen_port));
+var host = process.env.HOST || '0.0.0.0';
+
+cors_proxy.createServer({
+    originWhitelist: ['localhost:4200'], // Allow all origins
+    requireHeader: ['origin', 'x-requested-with'],
+    removeHeaders: ['cookie', 'cookie2']
+}).listen(listen_port, host, function() {
+    console.log('Running CORS Anywhere on ' + host + ':' + listen_port);
+});
+//app.listen(listen_port, () => console.log('Backend server start up at port '+ listen_port));

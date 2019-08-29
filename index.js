@@ -15,6 +15,14 @@ mongoose.connect(process.env.DB_CONNECT|| 'mongodb+srv://webAuthenUser:27065124@
 mongoose.set('useFindAndModify', false);
 
 //cors options
+app.all('*', function(req, res, next) {
+    var origin = req.get('origin'); 
+    res.header('Access-Control-Allow-Origin', origin);
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+});
+
 const corsOptions = {
   preflightMaxAge: 5, //Optional
   origins: ['localhost:4200'],

@@ -9,7 +9,7 @@ router.get('/', async (req,res) =>{
        if(err){
            res.status(400).send('Currently no game in store or haveing bug.')
        }else{
-           res.header(res.header('Access-Control-Allow-Origin', '*')).send(games);
+           res.header('Access-Control-Allow-Origin', '*').send(games);
        }
    }
     )

@@ -18,10 +18,10 @@ mongoose.set('useFindAndModify', false);
 const corsOptions = {
   preflightMaxAge: 5, //Optional
   origins: ['localhost:4200'],
-  allowHeaders: ['auth-token'],
+  allowHeaders: ['*'],
   credentials:true,
   allowmethods:['GET', 'PUT', 'POST','DELETE','PATCH','OPTIONS'],
-  exposeHeaders: ['auth-token']
+  exposeHeaders: ['*']
 }
 
 

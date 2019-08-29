@@ -47,4 +47,4 @@ cors_proxy.createServer({
     console.log('Running CORS Anywhere on ' + host + ':' + port);
 });
 
-//app.listen(listen_port, () => console.log('Backend server start up at port '+ listen_port));
+app.listen(listen_port, () => console.log('Backend server start up at port '+ listen_port));

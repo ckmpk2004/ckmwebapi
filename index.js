@@ -19,10 +19,10 @@ mongoose.set('useFindAndModify', false);
 const corsOptions = {
   preflightMaxAge: 5, //Optional
   origins: ['localhost:4200'],
-  allowHeaders: ['*'],
+  allowHeaders: ['Autharization'],
   credentials:true,
   allowmethods:['GET', 'PUT', 'POST','DELETE','PATCH','OPTIONS'],
-  exposeHeaders: ['*']
+  exposeHeaders: ['Autharization']
 }
 
 app.use(function(req, res, next) { 
@@ -32,7 +32,7 @@ app.use(function(req, res, next) {
 })
 
 //Middleware
-app.use(express.json());1
+app.use(express.json());
 app.use(cors(corsOptions));
 
 //Route Middleware
@@ -42,7 +42,7 @@ app.use('/games', gameRoute);
 
 const listen_port = process.env.PORT || 8080;
 
-const host = process.env.HOST || 'https://cors-anywhere.herokuapp.com';
+const host = process.env.HOST || 'https://ckmwebapi.herokuapp.com';
 
 cors_proxy.createServer({
     originWhitelist: [], // Allow all origins

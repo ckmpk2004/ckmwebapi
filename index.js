@@ -43,8 +43,8 @@ cors_proxy.createServer({
     originWhitelist: [], // Allow all origins
     requireHeader: ['origin', 'x-requested-with'],
     removeHeaders: ['cookie', 'cookie2']
-}).listen(port, host, function() {
+}).listen(listen_port, host, function() {
     console.log('Running CORS Anywhere on ' + host + ':' + port);
 });
 
-app.listen(listen_port, () => console.log('Backend server start up at port '+ listen_port));
+//app.listen(listen_port, () => console.log('Backend server start up at port '+ listen_port));

@@ -25,4 +25,4 @@ app.use('/games', gameRoute);
 
 
 listen_port = process.env.PORT;
-app.listen(3000, () => console.log('Backend server start up at port '+ listen_port));
+app.listen(listen_port, () => console.log('Backend server start up at port '+ listen_port));

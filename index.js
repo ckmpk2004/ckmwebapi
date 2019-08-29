@@ -3,6 +3,7 @@ const app = express();
 const dotenv = require('dotenv').config();
 const mongoose = require('mongoose');
 const cors = require('cors');
+const cors_proxy = require('cors-anywhere');
 
 //Import Routes
 const authRoute = require('./routes/auth');
@@ -15,14 +16,6 @@ mongoose.connect(process.env.DB_CONNECT|| 'mongodb+srv://webAuthenUser:27065124@
 mongoose.set('useFindAndModify', false);
 
 //cors options
-app.all('*', function(req, res, next) {
-    var origin = req.get('origin'); 
-    res.header('Access-Control-Allow-Origin', origin);
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
-    next();
-});
-
 const corsOptions = {
   preflightMaxAge: 5, //Optional
   origins: ['localhost:4200'],
@@ -43,4 +36,15 @@ app.use('/games', gameRoute);
 
 
 const listen_port = process.env.PORT || 8080;
-app.listen(listen_port, () => console.log('Backend server start up at port '+ listen_port));
+
+const host = process.env.HOST || '0.0.0.0';
+
+cors_proxy.createServer({
+    originWhitelist: [], // Allow all origins
+    requireHeader: ['origin', 'x-requested-with'],
+    removeHeaders: ['cookie', 'cookie2']
+}).listen(port, host, function() {
+    console.log('Running CORS Anywhere on ' + host + ':' + port);
+});
+
+//app.listen(listen_port, () => console.log('Backend server start up at port '+ listen_port));

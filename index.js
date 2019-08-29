@@ -16,7 +16,7 @@ const gameRoute = require('./routes/games');
 
 //connect to DB
 mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true },
-    () => console.log('Successfully connected to DB!')
+    () => console.log(process.env.DB_CONNECT+'Successfully connected to DB!')
 );
 mongoose.set('useFindAndModify', false);
 

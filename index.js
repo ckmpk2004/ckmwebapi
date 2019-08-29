@@ -16,7 +16,6 @@ const cors = corsMiddleware({
     exposeHeaders: ['Authorization']
   })
 
-app.pre(cors.preflight);
 app.use(cors.actual);
 app.use(bodyParser.json());
 

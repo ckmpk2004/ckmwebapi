@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const dotenv = require('dotenv').config();
 const mongoose = require('mongoose');
+var bodyParser= require('body-parser');
 var cors = require('cors');
 const cors_proxy = require('cors-anywhere');
 
@@ -15,6 +16,7 @@ const corsOptions = {
     exposeHeaders: ['Authorization', 'Access-Control-Allow-Origin']
   }
 
+app.use(bodyParser.json());
 app.use(cors(corsOptions));
 
 //Import Routes

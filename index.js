@@ -15,8 +15,6 @@ mongoose.connect(process.env.DB_CONNECT|| 'mongodb+srv://webAuthenUser:27065124@
 );
 mongoose.set('useFindAndModify', false);
 
-//
-app.use(allow)
 
 
 //cors options

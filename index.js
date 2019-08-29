@@ -32,7 +32,7 @@ app.use(function(req, res, next) {
 })
 
 //Middleware
-app.use(express.json());
+app.use(express.json());1
 app.use(cors(corsOptions));
 
 //Route Middleware
@@ -43,13 +43,13 @@ app.use('/games', gameRoute);
 const listen_port = process.env.PORT || 8080;
 
 const host = process.env.HOST || '0.0.0.0';
-/*
+
 cors_proxy.createServer({
     originWhitelist: [], // Allow all origins
-    requireHeader: ['origin', 'x-requested-with'],
+    requireHeader: ['Origin', 'X-Requested-With'],
     removeHeaders: ['cookie', 'cookie2']
 }).listen(listen_port, host, function() {
     console.log('Running CORS Anywhere on ' + host + ':' + listen_port);
 });
-*/
+
 app.listen(listen_port, () => console.log('Backend server start up at port '+ listen_port));

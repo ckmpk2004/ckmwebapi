@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const dotenv = require('dotenv').config();
 const mongoose = require('mongoose');
-const cors = require('cors');
+var cors = require('cors');
 const cors_proxy = require('cors-anywhere');
 
 //Import Routes
@@ -15,14 +15,18 @@ mongoose.connect(process.env.DB_CONNECT|| 'mongodb+srv://webAuthenUser:27065124@
 );
 mongoose.set('useFindAndModify', false);
 
+//
+app.use(allow)
+
+
 //cors options
 const corsOptions = {
   preflightMaxAge: 5, //Optional
   origins: ['localhost:4200'],
-  allowHeaders: ['Autharization'],
+  allowHeaders: ['Authorization', 'Access-Control-Allow-Origin'],
   credentials:true,
   allowmethods:['GET', 'PUT', 'POST','DELETE','PATCH','OPTIONS'],
-  exposeHeaders: ['Autharization']
+  exposeHeaders: ['Authorization', 'Access-Control-Allow-Origin']
 }
 
 //Middleware
@@ -35,15 +39,5 @@ app.use('/games', gameRoute);
 
 
 const listen_port = process.env.PORT || 8080;
-/*
-const host = process.env.HOST || 'https://ckmwebapi.herokuapp.com';
 
-cors_proxy.createServer({
-    originWhitelist: [], // Allow all origins
-    requireHeader: ['Origin', 'X-Requested-With'],
-    removeHeaders: ['cookie', 'cookie2']
-}).listen(listen_port, host, function() {
-    console.log('Running CORS Anywhere on ' + host + ':' + listen_port);
-});
-*/
 app.listen(listen_port, () => console.log('Backend server start up at port '+ listen_port));

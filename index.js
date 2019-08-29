@@ -5,6 +5,18 @@ const mongoose = require('mongoose');
 var cors = require('cors');
 const cors_proxy = require('cors-anywhere');
 
+//cors options
+const corsOptions = {
+    preflightMaxAge: 5, //Optional
+    origins: ['localhost:4200'],
+    allowHeaders: ['Authorization', 'Access-Control-Allow-Origin'],
+    credentials:true,
+    allowmethods:['GET', 'PUT', 'POST','DELETE','PATCH','OPTIONS'],
+    exposeHeaders: ['Authorization', 'Access-Control-Allow-Origin']
+  }
+
+app.use(cors(corsOptions));
+
 //Import Routes
 const authRoute = require('./routes/auth');
 const gameRoute = require('./routes/games');
@@ -17,15 +29,7 @@ mongoose.set('useFindAndModify', false);
 
 
 
-//cors options
-const corsOptions = {
-  preflightMaxAge: 5, //Optional
-  origins: ['localhost:4200'],
-  allowHeaders: ['Authorization', 'Access-Control-Allow-Origin'],
-  credentials:true,
-  allowmethods:['GET', 'PUT', 'POST','DELETE','PATCH','OPTIONS'],
-  exposeHeaders: ['Authorization', 'Access-Control-Allow-Origin']
-}
+
 
 //Middleware
 app.all('/', function(req, res, next) {
@@ -34,7 +38,7 @@ app.all('/', function(req, res, next) {
     next();
    });
 app.use(express.json());
-app.use(cors(corsOptions));
+
 
 //Route Middleware
 app.use('/', authRoute);

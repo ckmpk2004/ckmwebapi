@@ -6,7 +6,7 @@ var bodyParser= require('body-parser');
 const cors = require('cors');
 
 app.use(function(req, res, next) {
-    req.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Origin', '*');
     next();
   });
 

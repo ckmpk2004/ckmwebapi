@@ -16,7 +16,7 @@ if ('OPTIONS' == req.method) {
         if(err){
             res.status(400).send('Currently no game in store or haveing bug.')
         }else{
-            res.send({abc:abc});
+            res.send(games);
         }
     }
      )

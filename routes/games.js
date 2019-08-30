@@ -12,17 +12,18 @@ await res.header("Access-Control-Allow-Headers", 'Authorization, Origin,X-Reques
 if ('OPTIONS' == req.method) {
     res.send(200);
 } else {
+    await Games.find({}, function(err, games){
+        if(err){
+            res.status(400).send('Currently no game in store or haveing bug.')
+        }else{
+            res.send({abc:abc});
+        }
+    }
+     )
     next();
 }
 
-await Games.find({}, function(err, games){
-       if(err){
-           res.status(400).send('Currently no game in store or haveing bug.')
-       }else{
-           res.send({abc:abc});
-       }
-   }
-    )
+
 });
 
 //Add new game

@@ -22,7 +22,7 @@ const corsConfig = {
 //cors
 app.use(bodyParser.json());
 app.use(cors(corsConfig));
-
+app.options('*', cors(corsConfig));
 
 //Import Routes
 const authRoute = require('./routes/auth');
@@ -45,5 +45,5 @@ app.use('/games', gameRoute);
 
 
 const listen_port = process.env.PORT || 8080;
-app.options('*', cors(corsConfig));
+
 app.listen(listen_port, () => console.log('Backend server start up at port '+ listen_port));

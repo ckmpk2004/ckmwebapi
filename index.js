@@ -18,7 +18,7 @@ const corsConfig = {
 */
 //cors
 app.use(bodyParser.json());
-app.use(cors());
+//app.use(cors());
 
 
 //Import Routes

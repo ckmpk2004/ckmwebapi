@@ -5,6 +5,10 @@ const mongoose = require('mongoose');
 var bodyParser= require('body-parser');
 const cors = require('cors');
 
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+  });
 
 //cors options
 const corsConfig = {

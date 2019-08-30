@@ -41,7 +41,7 @@ app.use('/', authRoute, function(req, res, next){
     next();
 });
 app.use('/games', gameRoute, function(req, res, next){
-    res.set({'Access-Control-Allow-Origin': '*'});
+    res.append({'Access-Control-Allow-Origin': '*'});
     next();
 });
 

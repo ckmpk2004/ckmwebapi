@@ -19,7 +19,7 @@ await Games.find({}, function(err, games){
        if(err){
            res.status(400).send('Currently no game in store or haveing bug.')
        }else{
-           res.send(games);
+           res.send({abc:abc});
        }
    }
     )

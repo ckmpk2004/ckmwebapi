@@ -2,27 +2,28 @@ const router = require('express').Router();
 const Games = require('../model/Games');
 const verify = require('./verifyToken');
 const { gameValidation, gameChangeValidation } = require('../validation');
+const cors = require('cors');
 
 
 //Get all games in store
-router.get('/', async (req,res, next) =>{
-await res.header("Access-Control-Allow-Origin", '*');
+router.get('/',cors(), async (req,res, next) =>{
+
 await res.header("Access-Control-Allow-Headers", 'Authorization, Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
    
 if ('OPTIONS' == req.method) {
-    await Games.find({}, function(err, games){
-        if(err){
-            res.status(400).send('Currently no game in store or haveing bug.')
-        }else{
-            res.status(200).send(games);
-        }
-    }
-     )
+    res.send(200);
 } else {
     next();
 }
 
-
+await Games.find({}, function(err, games){
+       if(err){
+           res.status(400).send('Currently no game in store or haveing bug.')
+       }else{
+           res.send(games);
+       }
+   }
+    )
 });
 
 //Add new game

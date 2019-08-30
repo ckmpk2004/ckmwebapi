@@ -6,7 +6,6 @@ var bodyParser= require('body-parser');
 const cors = require('cors');
 
 //cors options
-/*
 const corsConfig = {
     origin: ["http://localhost:4200"],
     allowedHeaders: ['Access-Control-Allow-Origin','Content-Type',
@@ -15,10 +14,9 @@ const corsConfig = {
     credentials: true,
     methods: "GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE"
 };
-*/
 //cors
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors(corsConfig));
 
 
 //Import Routes
@@ -42,5 +40,5 @@ app.use('/games', gameRoute);
 
 
 const listen_port = process.env.PORT || 8080;
-
+app.options('*', cors(corsConfig));
 app.listen(listen_port, () => console.log('Backend server start up at port '+ listen_port));

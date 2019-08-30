@@ -6,7 +6,7 @@ const { gameValidation, gameChangeValidation } = require('../validation');
 
 //Get all games in store
 router.get('/', async (req,res, next) =>{
-
+    await res.header("Access-Control-Allow-Origin", '*');
 await res.header("Access-Control-Allow-Headers", 'Authorization, Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
    
 if ('OPTIONS' == req.method) {

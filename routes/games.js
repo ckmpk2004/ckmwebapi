@@ -9,11 +9,12 @@ const app = express();
 //Get all games in store
 router.get('/', cors(), async (req,res, next) =>{
 
-await Games.find({}, function(err, games){
+
+await Games.findOne({}, function(err, games){
        if(err){
            res.status(400).send('Currently no game in store or haveing bug.')
        }else{
-           res.send(games);
+           res.set("Access-Control-Allow-Origin",'*').send(games);
        }
    }
     )

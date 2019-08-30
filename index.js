@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 var bodyParser= require('body-parser');
 const cors = require('cors');
 
+axios
 //cors options
 const corsConfig = {
     origin: ["http://localhost:4200"],

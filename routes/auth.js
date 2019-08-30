@@ -5,7 +5,7 @@ const bcrypt = require('bcryptjs');
 const { registerValidation, loginValidation } = require('../validation');
 
 
-//User Registation
+//User Registation (Not avaiable in this resit assignment)
 /*
 router.post('/register', async (req, res) => {
 
@@ -36,6 +36,7 @@ router.post('/register', async (req, res) => {
     }
 });
 */
+
 //User Login
 router.post('/login', async (req,res) => {
      //Make Sure data is vaild before adding user
@@ -53,8 +54,6 @@ router.post('/login', async (req,res) => {
      //JWT Token
      const token = jwt.sign({_id: user._id}, process.env.JWT_SECRET);
      res.status(200).send({token})
-
-     //res.send('Successfully Login!');
 });
 
 

@@ -12,8 +12,8 @@ await Games.find({}, function(err, games){
        }else{
            res.send(games);
        }
-   }
-    )
+    }
+)
 });
 
 //Add new game
@@ -40,7 +40,7 @@ router.put('/add', verify, async (req,res) =>{
     
 });
 
-//Modify game Name/Description/Price
+//Modify game : Name , Description , Price
 router.post('/modify', verify, async (req,res) =>{
 
     const {error} = gameChangeValidation(req.body);

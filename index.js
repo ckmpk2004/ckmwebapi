@@ -14,7 +14,7 @@ const corsConfig = {
     'X-Requested-With',
     'Accept',
     'Authorization',
-    'Access-Ccontrol-Allow-Methods',
+    'Access-Control-Allow-Methods',
     'auth-token'],
     credentials: true,
     methods: "GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE"

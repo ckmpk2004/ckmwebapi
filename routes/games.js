@@ -5,10 +5,17 @@ const { gameValidation, gameChangeValidation } = require('../validation');
 
 
 //Get all games in store
-router.get('/', async (req,res) =>{
+router.get('/', async (req,res, next) =>{
 
-    await res.setHeader('X-Requested-With', 'XMLHttpRequest');
-   await Games.find({}, function(err, games){
+await res.header("Access-Control-Allow-Headers", 'Authorization, Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
+   
+if ('OPTIONS' == req.method) {
+    res.send(200);
+} else {
+    next();
+}
+
+await Games.find({}, function(err, games){
        if(err){
            res.status(400).send('Currently no game in store or haveing bug.')
        }else{

@@ -5,10 +5,6 @@ const mongoose = require('mongoose');
 var bodyParser= require('body-parser');
 const cors = require('cors');
 
-app.use(function(req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    next();
-  });
 
 //cors options
 const corsConfig = {
@@ -40,8 +36,14 @@ app.use(express.json());
 
 
 //Route Middleware
-app.use('/', authRoute);
-app.use('/games', gameRoute);
+app.use('/', authRoute, function(req, res, next){
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    next();
+});
+app.use('/games', gameRoute, function(req, res, next){
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    next();
+});
 
 
 const listen_port = process.env.PORT || 8080;

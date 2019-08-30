@@ -6,16 +6,10 @@ const cors = require('cors');
 const express = require('express');
 const app = express();
 
+router.cors();
+
 //Get all games in store
-router.get('/', async (req,res, next) =>{
-
-app.cors()
-
-if ('OPTIONS' == req.method) {
-    res.send(200);
-} else {
-    next();
-}
+router.get('/', cors(), async (req,res, next) =>{
 
 await Games.find({}, function(err, games){
        if(err){

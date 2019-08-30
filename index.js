@@ -6,7 +6,7 @@ const cors = require('cors');
 
 //cors options
 const corsConfig = {
-    origin: ["http://localhost:4200"],
+    origin: ["http://localhost:4200","https://ckmpk2004.github.io/games"],
     allowedHeaders: [
     'Access-Control-Allow-Origin',
     'Content-Type',

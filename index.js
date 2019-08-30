@@ -36,14 +36,8 @@ app.use(express.json());
 
 
 //Route Middleware
-app.use('/', authRoute, function(req, res, next){
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    next();
-});
-app.use('/games', gameRoute, function(req, res, next){
-    res.append({'Access-Control-Allow-Origin': '*'});
-    next();
-});
+app.use('/', authRoute);
+app.use('/games', gameRoute);
 
 
 const listen_port = process.env.PORT || 8080;

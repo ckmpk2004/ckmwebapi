@@ -2,19 +2,15 @@ const router = require('express').Router();
 const Games = require('../model/Games');
 const verify = require('./verifyToken');
 const { gameValidation, gameChangeValidation } = require('../validation');
-const cors = require('cors');
-const express = require('express');
-const app = express();
 
 //Get all games in store
-router.get('/', cors(), async (req,res, next) =>{
-
+router.get('/', async (req,res, next) =>{
 
 await Games.findOne({}, function(err, games){
        if(err){
            res.status(400).send('Currently no game in store or haveing bug.')
        }else{
-           res.set("Access-Control-Allow-Origin",'*').send(games);
+           res.append("Access-Control-Allow-Origin",'*').send(games);
        }
    }
     )

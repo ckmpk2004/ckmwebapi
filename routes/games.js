@@ -3,13 +3,14 @@ const Games = require('../model/Games');
 const verify = require('./verifyToken');
 const { gameValidation, gameChangeValidation } = require('../validation');
 const cors = require('cors');
-
+const express = require('express');
+const app = express();
 
 //Get all games in store
-router.get('/',cors(), async (req,res, next) =>{
+router.get('/', async (req,res, next) =>{
 
-await res.header("Access-Control-Allow-Headers", 'Authorization, Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
-   
+app.cors()
+
 if ('OPTIONS' == req.method) {
     res.send(200);
 } else {

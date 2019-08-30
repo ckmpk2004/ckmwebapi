@@ -6,8 +6,6 @@ const cors = require('cors');
 const express = require('express');
 const app = express();
 
-router.cors();
-
 //Get all games in store
 router.get('/', cors(), async (req,res, next) =>{
 

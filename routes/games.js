@@ -4,9 +4,9 @@ const verify = require('./verifyToken');
 const { gameValidation, gameChangeValidation } = require('../validation');
 
 //Get all games in store
-router.get('/', async (req,res, next) =>{
+router.get('/', async (req,res) =>{
 
-await Games.findOne({}, function(err, games){
+await Games.find({}, function(err, games){
        if(err){
            res.status(400).send('Currently no game in store or haveing bug.')
        }else{
